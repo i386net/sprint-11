@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body>
+    <div class="root">
+      <header class="header root__section">
+        <img src="./images/logo.svg" alt="mesto logo" class="logo" />
+      </header>
+      <div class="profile root__section">
+        <div class="user-info">
+          <div class="user-info__photo"></div>
+          <div class="user-info__data">
+<!--            Jaques Causteau-->
+            <h1 class="user-info__name"></h1>
+<!--            Sailor, Researcher-->
+            <p class="user-info__job"></p>
+            <button class="user-info__edit-button button">Edit</button>
+          </div>
+          <button class="button user-info__button">+</button>
+        </div>
+      </div>
+      <div class="places-list root__section"></div>
+      <!-- places -->
+      <div class="popup popup_type_place">
+        <div class="popup__content">
+          <img src="./images/close.svg" alt="" class="popup__close popup__close_type_place" />
+          <h3 class="popup__title">Новое место</h3>
+          <form class="popup__form popup__form_place" name="new" novalidate>
+            <input
+              type="text"
+              name="name"
+              id="place"
+              minlength="2"
+              maxlength="30"
+              class="popup__input popup__input_type_name"
+              placeholder="Название"
+              required
+            />
+            <span id="error-place" class="error-message"></span>
+            <input
+              type="url"
+              name="link"
+              id="link"
+              class="popup__input popup__input_type_link-url"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span id="error-link" class="error-message"></span>
+            <button type="submit" class="button popup__button place-card__submit">+</button>
+          </form>
+        </div>
+      </div>
+      <!-- end places -->
+      <!--      avatar -->
+      <div class="popup popup_type_avatar">
+        <div class="popup__content">
+          <img src="./images/close.svg" alt="" class="popup__close popup__close_type_avatar" />
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form popup__form_avatar" name="new" novalidate>
+            <input
+              type="url"
+              name="link"
+              id="avatar"
+              class="popup__input popup__input_type_link-url"
+              placeholder="Ссылка на аватар"
+              required
+            />
+            <span id="error-avatar" class="error-message"></span>
+            <button type="submit" class="button popup__button">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <!--      end avatar-->
+      <!-- profile -->
+      <div class="popup popup_type_profile">
+        <div class="popup__content">
+          <img src="./images/close.svg" alt="" class="popup__close popup__close_type_profile" />
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="popup__form popup__form_profile" name="new" novalidate>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              minlength="2"
+              maxlength="30"
+              class="popup__input popup__input_type_username"
+              placeholder="Имя"
+              required
+            />
+            <span id="error-username" class="error-message"></span>
+            <input
+              type="text"
+              name="job"
+              id="job"
+              minlength="2"
+              maxlength="30"
+              class="popup__input popup__input_type_job"
+              placeholder="О себе"
+              required
+            />
+            <span id="error-job" class="error-message"></span>
+            <!--            <input-->
+            <!--              type="email"-->
+            <!--              name="email"-->
+            <!--              id="email"-->
+            <!--              class="popup__input popup__input_type_email"-->
+            <!--              placeholder="Email"-->
+            <!--              required-->
+            <!--            />-->
+            <!--            <span id="error-email" class="error-message"></span>-->
+            <button type="submit" class=" button popup__button profile__submit ">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- end profile -->
+      <!-- image -->
+      <div class="popup popup_type_image">
+        <div class="popup__image-container">
+          <img src="" alt="" class="popup__image" />
+          <img src="./images/close.svg" alt="" class="popup__close popup__close_type_image" />
+        </div>
+      </div>
+      <!-- end image -->
+    </div>
+    <script src="./scripts/API.js"></script>
+    <script src="./scripts/Card.js"></script>
+    <script src="./scripts/CardList.js"></script>
+    <script src="./scripts/Popup.js"></script>
+    <script src="./scripts/UserInfo.js"></script>
+    <script src="./scripts/FormValidator.js"></script>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
