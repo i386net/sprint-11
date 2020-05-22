@@ -18,20 +18,32 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|ico|svg)$/i,
+        use: [
+          'file-loader?name=./images/[name].[ext]',
+          {
+            loader: 'image-webpack-loader',
+            options: {},
+          },
+        ],
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=./vendor/[name].[ext]',
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './src/pages/index.[contenthash].css',
+      filename: 'index.[contenthash].css',
     }),
     new HtmlWebpackPlugin({
-      // Означает, что:
-      inject: false, // стили НЕ нужно прописывать внутри тегов
-      // hash: true, // для страницы нужно считать хеш
-      template: './src/index.html', // откуда брать образец для сравнения с текущим видом проекта
-      filename: 'index.html', // имя выходного файла, то есть того, что окажется в папке dist после сборки
+      inject: false,
+      template: './src/index.html',
+      filename: 'index.html',
     }),
     new WebpackMd5Hash(),
   ],
