@@ -10,7 +10,11 @@
   <body>
     <div class="root">
       <header class="header root__section">
-        <img src="./images/logo.svg" alt="mesto logo" class="logo" />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="mesto logo"
+          class="logo"
+        />
       </header>
       <div class="profile root__section">
         <div class="user-info">
@@ -30,7 +34,7 @@
       <div class="popup popup_type_place">
         <div class="popup__content">
           <img
-            src="./images/close.svg"
+            src="<%=require('./images/close.svg')%>"
             alt=""
             class="popup__close popup__close_type_place"
           />
@@ -70,7 +74,7 @@
       <div class="popup popup_type_avatar">
         <div class="popup__content">
           <img
-            src="./images/close.svg"
+            src="<%=require('./images/close.svg')%>"
             alt=""
             class="popup__close popup__close_type_avatar"
           />
@@ -96,7 +100,7 @@
       <div class="popup popup_type_profile">
         <div class="popup__content">
           <img
-            src="./images/close.svg"
+            src="<%=require('./images/close.svg')%>"
             alt=""
             class="popup__close popup__close_type_profile"
           />
@@ -148,7 +152,7 @@
         <div class="popup__image-container">
           <img src="" alt="" class="popup__image" />
           <img
-            src="./images/close.svg"
+            src="<%=require('./images/close.svg')%>"
             alt=""
             class="popup__close popup__close_type_image"
           />
