@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(formElement) {
     this.formElement = formElement;
     this.setEventListeners = this.setEventListeners.bind(this);
@@ -41,7 +41,7 @@ class FormValidator {
     this.resetError(errorElement);
     return true;
   }
-  
+
   activateError(element) {
     element.classList.add('popup__error-message');
   }
@@ -65,17 +65,17 @@ class FormValidator {
       button.removeAttribute('disabled');
     }
   }
-  
+
   setEventListeners() {
-      const inputs = Array.from(this.formElement.elements);
-      let isValidForm = true;
-      inputs.forEach((element) => {
-        if (!element.classList.contains('button')) {
-          if (!this.checkInputValidity(element)) {
-            isValidForm = false;
-          }
+    const inputs = Array.from(this.formElement.elements);
+    let isValidForm = true;
+    inputs.forEach((element) => {
+      if (!element.classList.contains('button')) {
+        if (!this.checkInputValidity(element)) {
+          isValidForm = false;
         }
-      });
-      this.setSubmitButtonState(isValidForm);
+      }
+    });
+    this.setSubmitButtonState(isValidForm);
   }
 }

@@ -1,4 +1,4 @@
-class UserInfo {
+export default class UserInfo {
   constructor({ userDomElements, api, saveButtonState }) {
     this.nameElenement = userDomElements.name;
     this.jobElement = userDomElements.job;
@@ -18,7 +18,9 @@ class UserInfo {
         this.jobElement.textContent = userData.about;
         this.avatarElement.style.backgroundImage = `url(${userData.avatar})`;
       })
-      .catch((err) => console.warn(`Не могу загрузить информацию о пользователе ${err}`));
+      .catch((err) =>
+        console.warn(`Не могу загрузить информацию о пользователе ${err}`)
+      );
   }
 
   updateUserInfo({ ...userData }) {
@@ -30,8 +32,12 @@ class UserInfo {
         this.jobElement.textContent = res.about;
       })
       .then(() => this.userPopup.closeHandling())
-      .catch((err) => console.warn(`Не могу обновить данные пользователя ${err}`))
-      .finally(() => this.saveButtonState(false, this.saveButton, this.saveButtonText));
+      .catch((err) =>
+        console.warn(`Не могу обновить данные пользователя ${err}`)
+      )
+      .finally(() =>
+        this.saveButtonState(false, this.saveButton, this.saveButtonText)
+      );
   }
 
   changeAvatar(avatarLink) {

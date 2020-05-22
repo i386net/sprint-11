@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
   constructor({ cardData, openImagePopup, api, userData }) {
     this.api = api;
     this.cardData = cardData;
@@ -10,20 +10,30 @@ class Card {
   }
 
   like() {
-    if (!this.card.querySelector('.place-card__like-icon').classList.contains('place-card__like-icon_liked')) {
-      this.card.querySelector('.place-card__like-icon').classList.add('place-card__like-icon_liked');
+    if (
+      !this.card
+        .querySelector('.place-card__like-icon')
+        .classList.contains('place-card__like-icon_liked')
+    ) {
+      this.card
+        .querySelector('.place-card__like-icon')
+        .classList.add('place-card__like-icon_liked');
       this.api
         .likeCard(this.cardData._id)
         .then((res) => {
-          this.card.querySelector('.place-card__like-amount').textContent = res.likes.length;
+          this.card.querySelector('.place-card__like-amount').textContent =
+            res.likes.length;
         })
         .catch((err) => console.log(`Не могу поставить лайк => ${err}`));
     } else {
-      this.card.querySelector('.place-card__like-icon').classList.remove('place-card__like-icon_liked');
+      this.card
+        .querySelector('.place-card__like-icon')
+        .classList.remove('place-card__like-icon_liked');
       this.api
         .dislikeCard(this.cardData._id)
         .then((res) => {
-          this.card.querySelector('.place-card__like-amount').textContent = res.likes.length;
+          this.card.querySelector('.place-card__like-amount').textContent =
+            res.likes.length;
         })
         .catch((err) => console.log(`Не могу удалить лайк  => ${err}`));
     }
@@ -63,19 +73,28 @@ class Card {
             </div>`
     );
 
-    this.card.querySelector('.place-card__name').textContent = this.cardData.name;
-    this.card.querySelector('.place-card__image').style.backgroundImage = `url(${this.cardData.link})`;
-    this.card.querySelector('.place-card__like-amount').textContent = this.cardData.likes.length;
+    this.card.querySelector(
+      '.place-card__name'
+    ).textContent = this.cardData.name;
+    this.card.querySelector(
+      '.place-card__image'
+    ).style.backgroundImage = `url(${this.cardData.link})`;
+    this.card.querySelector(
+      '.place-card__like-amount'
+    ).textContent = this.cardData.likes.length;
 
     const cardOwnerID = this.cardData.owner._id;
     // display trashcan for  my cards only
     if (this.myID === cardOwnerID) {
-      this.card.querySelector('.place-card__delete-icon').style.display = 'block';
+      this.card.querySelector('.place-card__delete-icon').style.display =
+        'block';
     }
 
     //  display my likes
     if (this.cardData.likes.some((owner) => owner._id === this.myID)) {
-      this.card.querySelector('.place-card__like-icon').classList.add('place-card__like-icon_liked');
+      this.card
+        .querySelector('.place-card__like-icon')
+        .classList.add('place-card__like-icon_liked');
     }
 
     this.card.addEventListener('click', this.setListeners);

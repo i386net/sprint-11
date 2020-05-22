@@ -1,5 +1,12 @@
-class CardList {
-  constructor({ cardsContainer, createCard, api, addCardPopup, submitCardButton, saveButtonState }) {
+export default class CardList {
+  constructor({
+    cardsContainer,
+    createCard,
+    api,
+    addCardPopup,
+    submitCardButton,
+    saveButtonState,
+  }) {
     this.container = cardsContainer;
     this.createCard = createCard;
     this.api = api;
@@ -26,7 +33,11 @@ class CardList {
   }
 
   postCard(cardData) {
-    this.saveButtonState(true, this.submitCardButton, this.submitCardButtonText);
+    this.saveButtonState(
+      true,
+      this.submitCardButton,
+      this.submitCardButtonText
+    );
     this.api
       .postCardToServer(cardData)
       .then((res) => {
@@ -36,6 +47,12 @@ class CardList {
         this.addCardPopup.closeHandling();
       })
       .catch((err) => console.warn(`Не могу загрузить карточку ${err}`))
-      .finally(() => this.saveButtonState(false, this.submitCardButton, this.submitCardButtonText));
+      .finally(() =>
+        this.saveButtonState(
+          false,
+          this.submitCardButton,
+          this.submitCardButtonText
+        )
+      );
   }
 }

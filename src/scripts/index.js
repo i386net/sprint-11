@@ -1,3 +1,11 @@
+import API from './API';
+import Card from './Card';
+import CardList from './CardList';
+import FormValidator from './FormValidator';
+import Popup from './Popup';
+import UserInfo from './UserInfo';
+import '../pages/index.css';
+
 (function() {
   // ------ API --------
   const api = new API({

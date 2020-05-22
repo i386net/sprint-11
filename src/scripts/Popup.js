@@ -1,4 +1,4 @@
-class Popup {
+export default class Popup {
   constructor(popup, resetFormCallback = () => {}) {
     this.popup = popup;
     this.closeButton = this.popup.querySelector('.popup__close');
@@ -9,18 +9,18 @@ class Popup {
 
   open() {
     this.popup.classList.add('popup_is-opened');
-   document.addEventListener('keydown', this.close);
+    document.addEventListener('keydown', this.close);
     this.popup.addEventListener('click', this.close);
   }
 
   closeHandling() {
     this.reset();
-      this.popup.classList.remove('popup_is-opened');
-      if (this.popup.classList.contains('popup_type_image')) {
-        this.popup.querySelector('.popup__image').removeAttribute('src');
-      }
-      document.removeEventListener('keydown', this.close);
-      this.popup.removeEventListener('click', this.close);
+    this.popup.classList.remove('popup_is-opened');
+    if (this.popup.classList.contains('popup_type_image')) {
+      this.popup.querySelector('.popup__image').removeAttribute('src');
+    }
+    document.removeEventListener('keydown', this.close);
+    this.popup.removeEventListener('click', this.close);
   }
 
   close(event) {
@@ -28,7 +28,10 @@ class Popup {
       this.closeHandling();
     }
     if (event.type === 'click') {
-      if (event.target.classList.contains('popup_is-opened') || event.target === this.closeButton) {
+      if (
+        event.target.classList.contains('popup_is-opened') ||
+        event.target === this.closeButton
+      ) {
         this.closeHandling();
       }
     }
